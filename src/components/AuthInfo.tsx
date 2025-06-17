@@ -1,5 +1,5 @@
-import { auth } from "@/auth"
- 
+import { auth } from "@/auth";
+import { Image } from '@heroui/react';
 export default async function UserAvatar() {
   const session = await auth()
  
@@ -10,7 +10,7 @@ export default async function UserAvatar() {
   return (
     <div>
       <pre>{JSON.stringify(session, null, 2)}</pre>
-      <img src={session.user.image || 'https://via.placeholder.com/150'} alt="User Avatar" />
+      <Image src={session.user.image || 'https://via.placeholder.com/150'} alt="User Avatar" />
     </div>
   )
 }

@@ -47,6 +47,8 @@ export default function Gitee<P extends GiteeProfile>(
       url: `${BASE_URL}/oauth/token`,
       async conform(resp: Response) {
         const { created_at: _, ...json } = await resp.json();
+        console.log(_);
+        
         return Response.json(json);
       },
     },

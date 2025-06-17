@@ -1,11 +1,11 @@
-// app/about/page.tsx
+
 import { Card } from '@heroui/react';
 
 export default function AboutPage() {
   return (
-    <div className="max-w-3xl mx-auto px-4 py-10">
+    <div className="w-full p-6">
       <Card className="p-6 space-y-4">
-        <h1 className="text-3xl font-bold">关于本站</h1>
+        <h1 className="text-2xl font-bold">关于本站</h1>
         <p>
           欢迎来到 <strong>我的博客</strong>！这是一个记录我在 Web 开发、技术探索、设计实践中所思所感的个人空间。
         </p>
@@ -22,8 +22,8 @@ export default function AboutPage() {
           如果你有任何建议或想交流技术，可以通过以下方式联系我：
         </p>
         <ul className="list-disc list-inside">
-          <li>邮箱：yourname@example.com</li>
-          <li>GitHub：<a href="https://github.com/yourname" className="text-blue-600 hover:underline" target="_blank">yourname</a></li>
+          <li>邮箱：lyaoting205@gmail.com</li>
+          <li>GitHub：<a href="https://github.com/lyt19900616/myblog" className="text-blue-600 hover:underline" target="_blank">lyt</a></li>
           <li>微博 / 推特 / 微信等</li>
         </ul>
       </Card>

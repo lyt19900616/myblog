@@ -130,10 +130,14 @@ model Comment {
   updatedAt DateTime @updatedAt
   // 外键关联
   postId    String
-  posts     Post[]
+  post      Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
   // 评论者
   userId    String
   author    User     @relation(fields: [userId], references: [id])
+
+  parentId String?
+  parent   Comment?  @relation("Comments", fields: [parentId], references: [id], onDelete: Cascade)
+  children Comment[] @relation("Comments")
 }
 
 model Like {

@@ -10,7 +10,7 @@ export default function CategoryAdd() {
     if (state.success) {
       onClose()
     }
-  }, [state])
+  }, [state, onClose])
   return (
     <div>
       <Button className="bg-black text-white" onPress={() => onOpen()}>新增分类</Button>

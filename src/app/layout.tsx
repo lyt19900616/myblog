@@ -1,4 +1,4 @@
-import NavBar from "@/components/NavBar";
+import MyNavBar from "@/components/MyNavBar";
 import type { Metadata } from "next";
 import { ThemeProvider } from 'next-themes';
 import { Geist, Geist_Mono } from "next/font/google";
@@ -35,7 +35,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <NavBar />
+          <MyNavBar />
           <div className="max-w-[1024px] mx-auto p-4">
           {children}
           </div>

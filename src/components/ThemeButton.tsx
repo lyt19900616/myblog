@@ -1,4 +1,5 @@
 'use client'
+import type { SwitchProps } from "@heroui/react";
 import { useSwitch, VisuallyHidden } from "@heroui/react";
 import { useTheme } from 'next-themes';
 import { JSX, SVGProps, useEffect, useState } from 'react';
@@ -39,8 +40,8 @@ const SunIcon = (props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) => {
     </svg>
   );
 };
-export default function ThemeButton(props: any) {
-  const {Component, slots, isSelected, getBaseProps, getInputProps, getWrapperProps} =
+export default function ThemeButton(props: SwitchProps) {
+  const {Component, slots, getBaseProps, getInputProps, getWrapperProps} =
   useSwitch(props);
   const [mounted, setMounted] = useState(false)
   const { theme, setTheme } = useTheme()

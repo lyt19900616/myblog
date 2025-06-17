@@ -1,6 +1,6 @@
 'use client'
+
 import {
-  Input,
   Link,
   Navbar,
   NavbarBrand,
@@ -8,9 +8,9 @@ import {
   NavbarItem
 } from "@heroui/react"
 import { SessionProvider } from "next-auth/react"
-import { useRouter } from "next/navigation"
-import { useState } from "react"
+import { usePathname, useRouter } from "next/navigation"
 import NavInfo from "./NavInfo"
+import SearchBar from "./SearchBar"
 import ThemeButton from "./ThemeButton"
 
 export const AcmeLogo = () => {
@@ -27,46 +27,48 @@ export const AcmeLogo = () => {
 }
 
 export default function Page() {
+  const router = useRouter()
+  const pathname = usePathname()
+
   const menus = [
     { name: "首页", href: "/" },
     { name: "分类", href: "/category" },
     { name: "关于", href: "/about" }
   ]
-  const router = useRouter()
-  const [activeMenu, setActiveMenu] = useState(menus[0].name)
-  const handleClick = (menu:{name: string, href: string}) => {
-    setActiveMenu(menu.name)
-    router.push(menu.href)
-  }
 
   return (
-    <Navbar className="shadow-md dark:shadow-amber-300">
+    <Navbar className="shadow-md dark:shadow-gray-600">
       <NavbarBrand className="flex-1">
-        <Link className="text-black" href="/">
-        <AcmeLogo />
-        <p className="text-2xl font-bold">博客系统</p>
+        <Link className="text-black dark:text-white" href="/">
+          <AcmeLogo />
+          <p className="text-2xl font-bold dark:text-white">博客系统</p>
         </Link>
       </NavbarBrand>
 
       <NavbarContent className="!flex-2 gap-4" justify="start">
-        {menus.map((menu) => (
-          <NavbarItem
-            className="cursor-pointer"
-            key={menu.name}
-            onClick={handleClick.bind(null, menu)}
-          >
-            <span className={`px-3 py-2 rounded-md transition font-medium
+        {menus.map((menu) => {
+          const isActive = pathname === menu.href
+          return (
+            <NavbarItem
+              className="cursor-pointer"
+              key={menu.name}
+              onClick={() => router.push(menu.href)}
+            >
+              <span className={`px-3 py-2 rounded-md transition font-medium dark:text-white
                 ${
-                  activeMenu === menu.name
+                  isActive
                     ? 'text-black text-2xl'
                     : 'text-gray-400 hover:text-black'
-                }`}>{menu.name}</span>
-          </NavbarItem>
-        ))}
+                }`}>
+                {menu.name}
+              </span>
+            </NavbarItem>
+          )
+        })}
       </NavbarContent>
 
       <NavbarContent className="flex-1" justify="end">
-        <Input />
+        <SearchBar />
       </NavbarContent>
 
       <NavbarContent className="flex-1" justify="center">
