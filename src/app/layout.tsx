@@ -1,5 +1,6 @@
 import MyNavBar from "@/components/MyNavBar";
 import type { Metadata } from "next";
+import { SessionProvider } from "next-auth/react";
 import { ThemeProvider } from 'next-themes';
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -35,10 +36,12 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <SessionProvider>
           <MyNavBar />
           <div className="max-w-[1024px] mx-auto p-4">
           {children}
           </div>
+          </SessionProvider>
         </ThemeProvider>
       </body>
     </html>

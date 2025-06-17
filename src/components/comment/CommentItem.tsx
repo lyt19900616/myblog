@@ -1,7 +1,6 @@
 import { CommentWithAuthor, fetchCommentsByPostId } from "@/prisma/query/comments";
 import { Avatar } from "@heroui/react";
 import dayjs from "dayjs";
-import { SessionProvider } from "next-auth/react";
 import CommentCreat from "./CommentCreat";
 
 export default async function CommentItem({ comment }: { comment: CommentWithAuthor }) {
@@ -16,9 +15,7 @@ export default async function CommentItem({ comment }: { comment: CommentWithAut
             <span className="flex-1 text-gray-800 dark:text-gray-100">{comment.content}</span>
             <span className="text-sm text-gray-400 w-[150px] text-right dark:text-gray-100">{dayjs(comment.createdAt).format('YYYY年MM月DD日')}</span>
           </p>
-          <SessionProvider>
             <CommentCreat postId={comment.postId} parentId={comment.id} isTop={false}/>
-          </SessionProvider>
         </div>
       </div>
       {

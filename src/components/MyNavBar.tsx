@@ -7,7 +7,6 @@ import {
   NavbarContent,
   NavbarItem
 } from "@heroui/react"
-import { SessionProvider } from "next-auth/react"
 import { usePathname, useRouter } from "next/navigation"
 import { Suspense } from "react"
 import NavInfo from "./NavInfo"
@@ -75,9 +74,7 @@ export default function Page() {
       </NavbarContent>
 
       <NavbarContent className="flex-1" justify="center">
-        <SessionProvider>
           <NavInfo />
-        </SessionProvider>
         <ThemeButton />
       </NavbarContent>
     </Navbar>

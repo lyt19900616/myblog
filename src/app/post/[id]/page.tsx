@@ -6,7 +6,6 @@ import ContentShow from "@/components/post/ContentShow";
 import { getPostById } from "@/prisma/query/post";
 import { Card } from "@heroui/react";
 import dayjs from "dayjs";
-import { SessionProvider } from "next-auth/react";
 import { notFound } from "next/navigation";
 
 export default async function PostDetailPage({ params }: {params: Promise<{ id: string }>}) {
@@ -36,9 +35,7 @@ export default async function PostDetailPage({ params }: {params: Promise<{ id: 
 
         <div className="mt-8">
           <h2 className="text-lg font-semibold mb-2">评论 ({post.comments.length})</h2>
-          <SessionProvider>
             <CommentCreat postId={post.id} />
-          </SessionProvider>
           <CommentList postId={post.id} comments={post.comments} />
         </div>
       </Card>

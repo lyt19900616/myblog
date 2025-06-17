@@ -29,7 +29,7 @@ export default function CommentCreat({ postId, isOpen = false, parentId = '', is
   useEffect(() => {
     if (status === "loading") return;
     if (!session || !session.user) {
-      router.push("/login");
+      // router.push("/login");
     }
   }, [session, status, router])
   if (status === "loading" || !session?.user?.id) {
