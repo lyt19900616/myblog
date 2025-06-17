@@ -7,10 +7,10 @@ import { MessageCircle } from "lucide-react"
 import { redirect } from "next/navigation"
 
 interface PageProps {
-  searchParams: { keyword: string };
+  searchParams: Promise<{ keyword: string }>;
 }
 export default async function Page({ searchParams }: PageProps) {
-  const { keyword } =  searchParams
+  const { keyword } =  await searchParams
   const posts =  await fetchPostByKeyword(keyword)
   if (!keyword) {
     redirect('/')

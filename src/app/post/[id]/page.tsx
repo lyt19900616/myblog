@@ -9,9 +9,10 @@ import dayjs from "dayjs";
 import { SessionProvider } from "next-auth/react";
 import { notFound } from "next/navigation";
 
-export default async function PostDetailPage({ params }: {params: { id: string }}) {
+export default async function PostDetailPage({ params }: {params: Promise<{ id: string }>}) {
   const session = await auth();
-  const post = await getPostById(params.id);
+  const id = (await params).id;
+  const post = await getPostById(id);
 
   if (!post) return notFound();
 
