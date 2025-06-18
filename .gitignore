@@ -1,5 +1,3 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
 # dependencies
 /node_modules
 /.pnp
@@ -30,7 +28,7 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
+# env files
 .env*
 
 # vercel
@@ -40,4 +38,12 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# Prisma: 保留 schema，忽略 DB 和生成内容
+prisma/dev.db
+prisma/migrations/
+# ✅ 明确保留 schema 和 client
+!prisma/schema.prisma
+!node_modules/.prisma/client
+
+# 忽略 prisma 的生成缓存（如果你有使用这个路径）
 /generated/prisma
